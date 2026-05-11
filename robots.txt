@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /database/
+Disallow: /assets/uploads/
+
+Sitemap: http://localhost/builders/sitemap.xml
