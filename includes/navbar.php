@@ -1,13 +1,30 @@
 <?php
 /**
  * Navigation Bar
- * Builder Company Website
+ * CELTA Builder Website
  */
+
+$notifStmt = $pdo->query("SELECT message FROM notifications WHERE status = 'active' ORDER BY created_at DESC");
+$activeNotifs = $notifStmt->fetchAll(PDO::FETCH_COLUMN);
 ?>
 
+<?php if (!empty($activeNotifs)): ?>
+<!-- ═══════════════ NOTIFICATION TOPBAR ═══════════════ -->
+<div class="fixed top-0 left-0 right-0 z-[999] h-10 topbar-inner flex items-center overflow-hidden">
+    <div class="flex whitespace-nowrap notification-track w-max text-sm font-medium text-primary-400">
+        <?php 
+        // Create a single string of notifications separated by a dot or space
+        $notifString = implode(' &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; ', $activeNotifs);
+        ?>
+        <div class="px-8"><?= $notifString ?></div>
+        <div class="px-8"><?= $notifString ?></div>
+    </div>
+</div>
+<?php endif; ?>
+
 <!-- ═══════════════ MAIN NAVIGATION ═══════════════ -->
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-[998] transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+<nav id="navbar" class="fixed left-0 right-0 z-[998] transition-all duration-300" style="top: <?= !empty($activeNotifs) ? '40px' : '0' ?>;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 <?= !empty($activeNotifs) ? 'pt-2' : 'pt-4' ?>">
         <div class="navbar-glass bg-dark-950/60 backdrop-blur-2xl border border-white/5 rounded-2xl px-6 py-3 flex items-center justify-between transition-all duration-300">
             
             <!-- Logo -->
@@ -17,7 +34,7 @@
                 </div>
                 <div>
                     <span class="text-lg font-heading font-bold text-white"><?= SITE_NAME ?></span>
-                    <span class="hidden sm:block text-[10px] text-primary-400 tracking-widest uppercase">Premium Builders</span>
+                    <span class="hidden sm:block text-[10px] text-primary-400 tracking-widest uppercase">We Understand Your Dream</span>
                 </div>
             </a>
 

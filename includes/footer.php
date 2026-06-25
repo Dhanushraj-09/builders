@@ -1,7 +1,7 @@
 <?php
 /**
  * Footer
- * Builder Company Website
+ * CELTA Builder Website
  */
 ?>
 
@@ -18,7 +18,7 @@
                     </div>
                     <div>
                         <span class="text-xl font-heading font-bold text-white"><?= SITE_NAME ?></span>
-                        <span class="block text-xs text-primary-400 tracking-wider">Premium Builders</span>
+                        <span class="block text-xs text-primary-400 tracking-wider">We Understand Your Dream</span>
                     </div>
                 </a>
                 <p class="text-dark-400 text-sm leading-relaxed mb-6">Building dreams into reality with premium construction quality, modern designs, and trusted craftsmanship across Tamil Nadu.</p>
@@ -214,12 +214,10 @@
 </div>
 
 <!-- Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="<?= SITE_URL ?>/assets/js/three-scene.js?v=<?= time() ?>"></script>
 <script src="<?= SITE_URL ?>/assets/js/main.js?v=<?= time() ?>"></script>
 </body>
 </html>

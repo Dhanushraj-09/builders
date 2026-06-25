@@ -17,7 +17,7 @@ include __DIR__ . '/includes/navbar.php';
     <div class="absolute inset-0 bg-gradient-to-b from-primary-500/5 to-transparent"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div class="text-center" data-aos="fade-up">
-            <span class="section-badge"><i class="fa-solid fa-building-columns"></i> About Us</span>
+
             <h1 class="section-title text-4xl sm:text-5xl md:text-6xl text-white mt-4 mb-4">
                 Know Our <span class="gradient-text">Story</span>
             </h1>
@@ -41,7 +41,7 @@ include __DIR__ . '/includes/navbar.php';
                 </div>
             </div>
             <div data-aos="fade-left">
-                <span class="section-badge mb-4"><i class="fa-solid fa-book-open"></i> Our Journey</span>
+
                 <h2 class="section-title text-3xl sm:text-4xl text-white mt-4 mb-6">
                     Building <span class="gradient-text">Excellence</span> Since 2013
                 </h2>
@@ -73,12 +73,12 @@ include __DIR__ . '/includes/navbar.php';
             <div class="glass-card p-10" data-aos="fade-up">
                 <div class="service-icon mb-6"><i class="fa-solid fa-eye"></i></div>
                 <h3 class="font-heading font-bold text-white text-2xl mb-4">Our Vision</h3>
-                <p class="text-dark-300 leading-relaxed">To be the most trusted and innovative construction company in Tamil Nadu, known for delivering world-class residential and commercial buildings with cutting-edge technology and sustainable practices.</p>
+                <p class="text-dark-300 leading-relaxed">To become the leading construction company in Tamil Nadu, providing reliable and high-quality buildings to everyone.</p>
             </div>
             <div class="glass-card p-10" data-aos="fade-up" data-aos-delay="100">
                 <div class="service-icon mb-6"><i class="fa-solid fa-bullseye"></i></div>
                 <h3 class="font-heading font-bold text-white text-2xl mb-4">Our Mission</h3>
-                <p class="text-dark-300 leading-relaxed">To construct premium buildings that exceed client expectations through quality materials, expert workmanship, transparent processes, and on-time delivery. We aim to make every project a landmark of trust and excellence.</p>
+                <p class="text-dark-300 leading-relaxed">To build quality structures using advanced technology within budget and on time, exceeding customer expectations.</p>
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@ include __DIR__ . '/includes/navbar.php';
 <section class="py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16" data-aos="fade-up">
-            <span class="section-badge"><i class="fa-solid fa-trophy"></i> Achievements</span>
+
             <h2 class="section-title text-3xl sm:text-4xl md:text-5xl text-white mt-4">
                 Our <span class="gradient-text">Numbers</span> Speak
             </h2>
@@ -113,44 +113,13 @@ include __DIR__ . '/includes/navbar.php';
     </div>
 </section>
 
-<!-- Team -->
-<section class="py-24 bg-dark-900/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16" data-aos="fade-up">
-            <span class="section-badge"><i class="fa-solid fa-users"></i> Leadership</span>
-            <h2 class="section-title text-3xl sm:text-4xl md:text-5xl text-white mt-4 mb-4">
-                Meet Our <span class="gradient-text">Team</span>
-            </h2>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <?php
-            $team = [
-                ['name' => 'Rajesh Krishnan', 'role' => 'Founder & CEO', 'icon' => 'fa-user-tie'],
-                ['name' => 'Priya Sundaram', 'role' => 'Chief Architect', 'icon' => 'fa-compass-drafting'],
-                ['name' => 'Vijay Murugan', 'role' => 'Project Manager', 'icon' => 'fa-helmet-safety'],
-                ['name' => 'Lakshmi Devi', 'role' => 'Interior Head', 'icon' => 'fa-couch'],
-            ];
-            foreach($team as $i => $member):
-            ?>
-            <div class="glass-card team-card p-8 text-center" data-aos="fade-up" data-aos-delay="<?= $i * 100 ?>">
-                <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary-400/20 to-primary-600/10 border border-primary-500/20 flex items-center justify-center">
-                    <i class="fa-solid <?= $member['icon'] ?> text-primary-400 text-2xl"></i>
-                </div>
-                <h4 class="font-heading font-bold text-white text-lg"><?= $member['name'] ?></h4>
-                <p class="text-primary-400 text-sm mt-1"><?= $member['role'] ?></p>
-            </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-
 <!-- Why Choose Us -->
 <section class="py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16" data-aos="fade-up">
-            <span class="section-badge"><i class="fa-solid fa-check-double"></i> Why Us</span>
+
             <h2 class="section-title text-3xl sm:text-4xl md:text-5xl text-white mt-4 mb-4">
-                Why Choose <span class="gradient-text">StructuraPro</span>
+                Why Choose <span class="gradient-text">CELTA Builder</span>
             </h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

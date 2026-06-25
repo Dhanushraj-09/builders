@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $client_name = sanitize($_POST['client_name'] ?? '');
     $location = sanitize($_POST['location'] ?? '');
     $budget = sanitize($_POST['budget'] ?? '');
+    $square_feet = sanitize($_POST['square_feet'] ?? '');
     $status = sanitize($_POST['status'] ?? 'upcoming');
     $description = sanitize($_POST['description'] ?? '');
     $testimonial = sanitize($_POST['testimonial'] ?? '');
@@ -39,10 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($title)) {
         $error = 'Project title is required.';
     } else {
-        $stmt = $pdo->prepare("UPDATE projects SET title=:title, client_name=:cn, location=:loc, budget=:budget, status=:status, description=:desc, testimonial=:test, rating=:rating, video=:video, start_date=:sd, end_date=:ed, featured=:feat WHERE id=:id");
+        $stmt = $pdo->prepare("UPDATE projects SET title=:title, client_name=:cn, location=:loc, budget=:budget, square_feet=:sf, status=:status, description=:desc, testimonial=:test, rating=:rating, video=:video, start_date=:sd, end_date=:ed, featured=:feat WHERE id=:id");
         $stmt->execute([
             ':title' => $title, ':cn' => $client_name, ':loc' => $location,
-            ':budget' => $budget, ':status' => $status, ':desc' => $description,
+            ':budget' => $budget, ':sf' => $square_feet, ':status' => $status, ':desc' => $description,
             ':test' => $testimonial, ':rating' => $rating, ':video' => $video,
             ':sd' => $start_date ?: null, ':ed' => $end_date ?: null, ':feat' => $featured, ':id' => $id
         ]);
@@ -72,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             foreach ($_FILES['images']['tmp_name'] as $i => $tmp) {
                 if ($_FILES['images']['error'][$i] === UPLOAD_ERR_OK) {
                     $ext = strtolower(pathinfo($_FILES['images']['name'][$i], PATHINFO_EXTENSION));
-                    if (in_array($ext, ['jpg','jpeg','png','webp','gif'])) {
+                    if (in_array($ext, ['jpg','jpeg','png','webp','gif','mp4','webm','mov'])) {
                         $filename = 'project_' . $id . '_' . ($sortStart + $i) . '_' . time() . '.' . $ext;
                         if (move_uploaded_file($tmp, $uploadDir . $filename)) {
                             $imgStmt2 = $pdo->prepare("INSERT INTO project_images (project_id, image, sort_order) VALUES (:pid, :img, :sort)");
@@ -112,8 +113,9 @@ include __DIR__ . '/../includes/admin_sidebar.php';
                     <div><label class="form-label">Client Name</label><input type="text" name="client_name" class="form-input" value="<?= sanitize($project['client_name'] ?? '') ?>"></div>
                     <div><label class="form-label">Location</label><input type="text" name="location" class="form-input" value="<?= sanitize($project['location'] ?? '') ?>"></div>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                     <div><label class="form-label">Budget</label><input type="text" name="budget" class="form-input" value="<?= sanitize($project['budget'] ?? '') ?>"></div>
+                    <div><label class="form-label">Square Feet</label><input type="text" name="square_feet" class="form-input" value="<?= sanitize($project['square_feet'] ?? '') ?>"></div>
                     <div><label class="form-label">Start Date</label><input type="date" name="start_date" class="form-input" value="<?= $project['start_date'] ?? '' ?>"></div>
                     <div><label class="form-label">End Date</label><input type="date" name="end_date" class="form-input" value="<?= $project['end_date'] ?? '' ?>"></div>
                 </div>
@@ -140,9 +142,10 @@ include __DIR__ . '/../includes/admin_sidebar.php';
             <?php endif; ?>
 
             <div class="glass-card p-6 space-y-5">
-                <h3 class="font-heading font-bold text-white text-lg border-b border-white/5 pb-3">Add More Images</h3>
+                <h3 class="font-heading font-bold text-white text-lg border-b border-white/5 pb-3">Add More Media (Photos & Videos)</h3>
                 <div>
-                    <input type="file" name="images[]" multiple accept="image/*" class="form-input file:mr-4 file:py-1 file:px-4 file:rounded-lg file:border-0 file:bg-primary-500/10 file:text-primary-400 file:text-sm file:font-semibold">
+                    <input type="file" name="images[]" multiple accept="image/*,video/*" class="form-input file:mr-4 file:py-1 file:px-4 file:rounded-lg file:border-0 file:bg-primary-500/10 file:text-primary-400 file:text-sm file:font-semibold">
+                    <p class="text-dark-600 text-xs mt-1">Accepted: JPG, PNG, WebP, GIF, MP4, WEBM. Max 50MB each.</p>
                 </div>
                 <div><label class="form-label">Video URL</label><input type="text" name="video" class="form-input" value="<?= sanitize($project['video'] ?? '') ?>"></div>
             </div>

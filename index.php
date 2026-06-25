@@ -26,21 +26,20 @@ include __DIR__ . '/includes/navbar.php';
 
 <!-- ═══════════════ HERO SECTION ═══════════════ -->
 <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
-    <!-- Three.js Canvas -->
-    <div id="hero-canvas" class="absolute inset-0 z-0"></div>
+    <!-- Background Video -->
+    <video autoplay loop muted playsinline class="hero-video absolute inset-0 w-full h-full object-cover object-[75%_75%] md:object-center z-0">
+        <source src="<?= SITE_URL ?>/assets/videos/v1.mp4" type="video/mp4">
+    </video>
 
     <!-- Gradient Overlays -->
-    <div class="absolute inset-0 z-[1] bg-gradient-to-r from-dark-950/95 via-dark-950/70 to-transparent"></div>
-    <div class="absolute inset-0 z-[1] bg-gradient-to-t from-dark-950 via-transparent to-dark-950/50"></div>
+    <div class="hero-gradient-1 absolute inset-0 z-[1] bg-gradient-to-r from-dark-950/60 via-dark-950/30 to-transparent"></div>
+    <div class="hero-gradient-2 absolute inset-0 z-[1] bg-gradient-to-t from-dark-950/70 via-transparent to-transparent"></div>
 
     <!-- Hero Content -->
     <div class="hero-content relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
         <div class="max-w-3xl">
             <div class="hero-title">
-                <span class="section-badge mb-6">
-                    <i class="fa-solid fa-helmet-safety"></i>
-                    Premium Construction Company
-                </span>
+
                 <h1 class="section-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-6">
                     Building <span class="gradient-text">Dreams</span><br>
                     Into Reality
@@ -93,7 +92,7 @@ include __DIR__ . '/includes/navbar.php';
 <section class="py-24 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16" data-aos="fade-up">
-            <span class="section-badge"><i class="fa-solid fa-gear"></i> What We Do</span>
+
             <h2 class="section-title text-3xl sm:text-4xl md:text-5xl text-white mt-4 mb-4">
                 Our Premium <span class="gradient-text">Services</span>
             </h2>
@@ -123,7 +122,7 @@ include __DIR__ . '/includes/navbar.php';
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
             <div data-aos="fade-up">
-                <span class="section-badge"><i class="fa-solid fa-images"></i> Portfolio</span>
+
                 <h2 class="section-title text-3xl sm:text-4xl md:text-5xl text-white mt-4 mb-4">
                     Featured <span class="gradient-text">Projects</span>
                 </h2>
@@ -140,16 +139,23 @@ include __DIR__ . '/includes/navbar.php';
                 <div class="swiper-slide">
                     <a href="<?= SITE_URL ?>/project-detail.php?slug=<?= urlencode($project['slug']) ?>" class="block project-card group">
                         <div class="aspect-[4/3] overflow-hidden rounded-2xl relative">
-                            <?php if ($project['thumbnail']): ?>
-                                <img src="<?= UPLOAD_URL ?>projects/<?= sanitize($project['thumbnail']) ?>" alt="<?= sanitize($project['title']) ?>" class="w-full h-full object-cover project-image">
+                            <?php if ($project['thumbnail']): 
+                                $ext = strtolower(pathinfo($project['thumbnail'], PATHINFO_EXTENSION));
+                                $isVideo = in_array($ext, ['mp4', 'webm', 'mov']);
+                            ?>
+                                <?php if($isVideo): ?>
+                                    <video src="<?= UPLOAD_URL ?>projects/<?= sanitize($project['thumbnail']) ?>" class="w-full h-full object-cover project-image" muted autoplay loop playsinline></video>
+                                <?php else: ?>
+                                    <img src="<?= UPLOAD_URL ?>projects/<?= sanitize($project['thumbnail']) ?>" alt="<?= sanitize($project['title']) ?>" class="w-full h-full object-cover project-image">
+                                <?php endif; ?>
                             <?php else: ?>
                                 <div class="w-full h-full bg-dark-800 flex items-center justify-center project-image">
                                     <i class="fa-solid fa-building text-4xl text-dark-600"></i>
                                 </div>
                             <?php endif; ?>
                             <div class="project-overlay"></div>
-                            <div class="absolute top-4 left-4">
-                                <span class="badge-<?= $project['status'] ?> text-xs font-semibold px-3 py-1 rounded-full">
+                            <div class="absolute top-4 left-4 right-4 flex items-start justify-between pointer-events-none z-10">
+                                <span class="badge-<?= $project['status'] ?> text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
                                     <?= ucfirst(str_replace('_', ' ', $project['status'])) ?>
                                 </span>
                             </div>
@@ -174,7 +180,7 @@ include __DIR__ . '/includes/navbar.php';
 <section class="py-24 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16" data-aos="fade-up">
-            <span class="section-badge"><i class="fa-solid fa-diagram-project"></i> Our Process</span>
+
             <h2 class="section-title text-3xl sm:text-4xl md:text-5xl text-white mt-4 mb-4">
                 How We <span class="gradient-text">Build</span>
             </h2>
@@ -211,7 +217,7 @@ include __DIR__ . '/includes/navbar.php';
 <section class="py-24 bg-dark-900/30 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16" data-aos="fade-up">
-            <span class="section-badge"><i class="fa-solid fa-quote-left"></i> Testimonials</span>
+
             <h2 class="section-title text-3xl sm:text-4xl md:text-5xl text-white mt-4 mb-4">
                 Client <span class="gradient-text">Reviews</span>
             </h2>

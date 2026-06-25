@@ -43,7 +43,7 @@ include __DIR__ . '/includes/navbar.php';
     <div class="absolute inset-0 bg-gradient-to-b from-primary-500/5 to-transparent"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div class="text-center" data-aos="fade-up">
-            <span class="section-badge"><i class="fa-solid fa-envelope"></i> Get In Touch</span>
+
             <h1 class="section-title text-4xl sm:text-5xl md:text-6xl text-white mt-4 mb-4">
                 Contact <span class="gradient-text">Us</span>
             </h1>
@@ -91,9 +91,9 @@ include __DIR__ . '/includes/navbar.php';
 <!-- Contact Form + Map -->
 <section class="py-12 pb-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div class="flex flex-col md:flex-row gap-10 items-stretch w-full">
             <!-- Form -->
-            <div class="glass-card p-8 md:p-10" data-aos="fade-right">
+            <div class="glass-card p-8 md:p-10 flex-1 w-full" data-aos="fade-right">
                 <h2 class="font-heading font-bold text-white text-2xl mb-2">Get Free Quotation</h2>
                 <p class="text-dark-400 text-sm mb-8">Fill in your details and we'll get back to you within 24 hours.</p>
 
@@ -166,7 +166,7 @@ include __DIR__ . '/includes/navbar.php';
             </div>
 
             <!-- Map -->
-            <div data-aos="fade-left">
+            <div class="flex-1 w-full" data-aos="fade-left">
                 <div class="glass-card p-2 rounded-2xl h-full min-h-[500px]">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.2035!2d77.6363!3d9.5127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMzAnNDUuNyJOIDc3wrAzOCcxMC43IkU!5e0!3m2!1sen!2sin!4v1" class="w-full h-full rounded-xl" style="border:0; min-height:480px;" allowfullscreen loading="lazy"></iframe>
                 </div>

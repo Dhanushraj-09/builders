@@ -9,17 +9,23 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('load', () => {
         setTimeout(() => {
             document.getElementById('preloader')?.classList.add('loaded');
+            if (typeof AOS !== 'undefined') {
+                AOS.refresh();
+            }
+            if (typeof ScrollTrigger !== 'undefined') {
+                ScrollTrigger.refresh();
+            }
         }, 800);
     });
 
     // ── AOS Init ──
     if (typeof AOS !== 'undefined') {
         AOS.init({
-            duration: 800,
+            duration: 600,
             easing: 'ease-out-cubic',
             once: true,
-            offset: 80,
-            delay: 50
+            offset: 50,
+            delay: 0
         });
     }
 
@@ -123,12 +129,12 @@ document.addEventListener('DOMContentLoaded', () => {
             gsap.from(el, {
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 85%',
+                    start: 'top 95%',
                     toggleActions: 'play none none none'
                 },
                 y: 40,
                 opacity: 0,
-                duration: 0.8,
+                duration: 0.6,
                 ease: 'power2.out'
             });
         });

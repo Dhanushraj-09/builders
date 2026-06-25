@@ -1,7 +1,7 @@
 <?php
 /**
  * Frontend Header
- * Builder Company Website
+ * CELTA Builder Website
  */
 $currentPage = basename($_SERVER['PHP_SELF'], '.php');
 ?>
@@ -68,11 +68,13 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
 
     <!-- Preloader -->
     <div id="preloader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-dark-950">
-        <div class="preloader-content text-center">
-            <div class="building-loader mb-4">
-                <div class="building-block"></div>
-                <div class="building-block"></div>
-                <div class="building-block"></div>
+        <div class="preloader-content text-center flex flex-col items-center">
+            <div class="house-builder-loader mb-6">
+                <div class="roof"></div>
+                <div class="walls">
+                    <div class="window"></div>
+                    <div class="door"></div>
+                </div>
             </div>
             <p class="text-primary-400 font-heading text-lg tracking-wider animate-pulse"><?= SITE_NAME ?></p>
         </div>

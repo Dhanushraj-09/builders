@@ -52,10 +52,17 @@ include __DIR__ . '/includes/navbar.php';
                 <?php if (!empty($images)): ?>
                 <div class="swiper gallery-swiper rounded-2xl overflow-hidden mb-8" data-aos="fade-up">
                     <div class="swiper-wrapper">
-                        <?php foreach($images as $img): ?>
+                        <?php foreach($images as $img): 
+                            $ext = strtolower(pathinfo($img['image'], PATHINFO_EXTENSION));
+                            $isVideo = in_array($ext, ['mp4', 'webm', 'mov']);
+                        ?>
                         <div class="swiper-slide">
                             <div class="aspect-[16/10]">
-                                <img src="<?= UPLOAD_URL ?>projects/<?= sanitize($img['image']) ?>" alt="<?= sanitize($project['title']) ?>" class="w-full h-full object-cover cursor-pointer" data-lightbox="<?= UPLOAD_URL ?>projects/<?= sanitize($img['image']) ?>">
+                                <?php if($isVideo): ?>
+                                    <video src="<?= UPLOAD_URL ?>projects/<?= sanitize($img['image']) ?>" controls class="w-full h-full object-cover"></video>
+                                <?php else: ?>
+                                    <img src="<?= UPLOAD_URL ?>projects/<?= sanitize($img['image']) ?>" alt="<?= sanitize($project['title']) ?>" class="w-full h-full object-cover cursor-pointer" data-lightbox="<?= UPLOAD_URL ?>projects/<?= sanitize($img['image']) ?>">
+                                <?php endif; ?>
                             </div>
                         </div>
                         <?php endforeach; ?>
@@ -73,9 +80,19 @@ include __DIR__ . '/includes/navbar.php';
                 <!-- Thumbnail Strip -->
                 <?php if (count($images) > 1): ?>
                 <div class="flex gap-2 mb-8 overflow-x-auto pb-2" data-aos="fade-up">
-                    <?php foreach($images as $img): ?>
-                    <div class="w-20 h-16 flex-shrink-0 rounded-lg overflow-hidden cursor-pointer opacity-70 hover:opacity-100 transition-opacity border border-white/5 hover:border-primary-500/30" data-lightbox="<?= UPLOAD_URL ?>projects/<?= sanitize($img['image']) ?>">
-                        <img src="<?= UPLOAD_URL ?>projects/<?= sanitize($img['image']) ?>" alt="" class="w-full h-full object-cover">
+                    <?php foreach($images as $img): 
+                        $ext = strtolower(pathinfo($img['image'], PATHINFO_EXTENSION));
+                        $isVideo = in_array($ext, ['mp4', 'webm', 'mov']);
+                    ?>
+                    <div class="w-20 h-16 flex-shrink-0 rounded-lg overflow-hidden cursor-pointer opacity-70 hover:opacity-100 transition-opacity border border-white/5 hover:border-primary-500/30" <?= !$isVideo ? 'data-lightbox="' . UPLOAD_URL . 'projects/' . sanitize($img['image']) . '"' : '' ?>>
+                        <?php if($isVideo): ?>
+                            <div class="relative w-full h-full">
+                                <video src="<?= UPLOAD_URL ?>projects/<?= sanitize($img['image']) ?>" class="w-full h-full object-cover" muted></video>
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/30"><i class="fa-solid fa-play text-white/70 text-xs"></i></div>
+                            </div>
+                        <?php else: ?>
+                            <img src="<?= UPLOAD_URL ?>projects/<?= sanitize($img['image']) ?>" alt="" class="w-full h-full object-cover">
+                        <?php endif; ?>
                     </div>
                     <?php endforeach; ?>
                 </div>
@@ -139,18 +156,28 @@ include __DIR__ . '/includes/navbar.php';
                             <div><p class="text-dark-500 text-xs">Budget</p><p class="text-white text-sm font-medium"><?= sanitize($project['budget']) ?></p></div>
                         </div>
                         <?php endif; ?>
-                        <?php if ($project['start_date']): ?>
+                        <?php if (isset($project['square_feet']) && $project['square_feet']): ?>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center"><i class="fa-solid fa-maximize text-primary-400 text-xs"></i></div>
+                            <div><p class="text-dark-500 text-xs">Area</p><p class="text-white text-sm font-medium"><?= sanitize($project['square_feet']) ?> sq.ft</p></div>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php 
+                        $projectYear = '';
+                        if (!empty($project['end_date'])) {
+                            $projectYear = date('Y', strtotime($project['end_date']));
+                        } elseif (!empty($project['start_date'])) {
+                            $projectYear = date('Y', strtotime($project['start_date']));
+                        }
+                        if ($projectYear): 
+                        ?>
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center"><i class="fa-solid fa-calendar text-primary-400 text-xs"></i></div>
-                            <div><p class="text-dark-500 text-xs">Start Date</p><p class="text-white text-sm font-medium"><?= date('M d, Y', strtotime($project['start_date'])) ?></p></div>
+                            <div><p class="text-dark-500 text-xs">Year</p><p class="text-white text-sm font-medium"><?= $projectYear ?></p></div>
                         </div>
                         <?php endif; ?>
-                        <?php if ($project['end_date']): ?>
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center"><i class="fa-solid fa-calendar-check text-primary-400 text-xs"></i></div>
-                            <div><p class="text-dark-500 text-xs">Completion</p><p class="text-white text-sm font-medium"><?= date('M d, Y', strtotime($project['end_date'])) ?></p></div>
-                        </div>
-                        <?php endif; ?>
+                        
                         <?php if ($project['rating'] > 0): ?>
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center"><i class="fa-solid fa-star text-primary-400 text-xs"></i></div>
@@ -180,11 +207,18 @@ include __DIR__ . '/includes/navbar.php';
         <div class="mt-20">
             <h2 class="section-title text-2xl sm:text-3xl text-white mb-8" data-aos="fade-up">Related <span class="gradient-text">Projects</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <?php foreach($related as $rp): ?>
+                <?php foreach($related as $rp): 
+                    $rpExt = $rp['thumbnail'] ? strtolower(pathinfo($rp['thumbnail'], PATHINFO_EXTENSION)) : '';
+                    $rpIsVideo = in_array($rpExt, ['mp4', 'webm', 'mov']);
+                ?>
                 <a href="<?= SITE_URL ?>/project-detail.php?slug=<?= urlencode($rp['slug']) ?>" class="project-card group" data-aos="fade-up">
                     <div class="aspect-[4/3] overflow-hidden rounded-2xl relative">
                         <?php if ($rp['thumbnail']): ?>
-                            <img src="<?= UPLOAD_URL ?>projects/<?= sanitize($rp['thumbnail']) ?>" alt="<?= sanitize($rp['title']) ?>" class="w-full h-full object-cover project-image">
+                            <?php if ($rpIsVideo): ?>
+                                <video src="<?= UPLOAD_URL ?>projects/<?= sanitize($rp['thumbnail']) ?>" class="w-full h-full object-cover project-image" muted autoplay loop playsinline></video>
+                            <?php else: ?>
+                                <img src="<?= UPLOAD_URL ?>projects/<?= sanitize($rp['thumbnail']) ?>" alt="<?= sanitize($rp['title']) ?>" class="w-full h-full object-cover project-image">
+                            <?php endif; ?>
                         <?php else: ?>
                             <div class="w-full h-full bg-dark-800 flex items-center justify-center project-image"><i class="fa-solid fa-building text-4xl text-dark-600"></i></div>
                         <?php endif; ?>

@@ -15,23 +15,24 @@ include __DIR__ . '/includes/header.php';
 include __DIR__ . '/includes/navbar.php';
 ?>
 
-<!-- Page Header -->
-<section class="pt-32 pb-16 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-primary-500/5 to-transparent"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div class="text-center" data-aos="fade-up">
-            <span class="section-badge"><i class="fa-solid fa-gear"></i> Our Services</span>
+<!-- Services Section with Full Background -->
+<section class="relative overflow-hidden bg-cover bg-center bg-fixed pt-64 pb-24" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80');">
+    <!-- Background Overlays -->
+    <div class="absolute inset-0 bg-dark-950/40 backdrop-blur-[2px]"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/80 to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-20" data-aos="fade-up">
+
             <h1 class="section-title text-4xl sm:text-5xl md:text-6xl text-white mt-4 mb-4">
                 What We <span class="gradient-text">Offer</span>
             </h1>
-            <p class="text-dark-400 max-w-2xl mx-auto text-lg">Complete construction solutions from foundation to finishing — delivering excellence at every step.</p>
+            <p class="text-dark-300 max-w-2xl mx-auto text-lg">Complete construction solutions from foundation to finishing — delivering excellence at every step.</p>
         </div>
-    </div>
-</section>
 
-<!-- Services Grid -->
-<section class="py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Services Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <?php foreach($services as $i => $service): ?>
             <div class="glass-card service-card overflow-hidden group" data-aos="fade-up" data-aos-delay="<?= $i * 100 ?>">
@@ -40,8 +41,7 @@ include __DIR__ . '/includes/navbar.php';
                     <?php if ($service['image']): ?>
                         <img src="<?= UPLOAD_URL ?>services/<?= sanitize($service['image']) ?>" alt="<?= sanitize($service['title']) ?>" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     <?php else: ?>
-                        <div class="w-full h-full bg-gradient-to-br from-dark-800 to-dark-900 flex items-center justify-center">
-                            <i class="fa-solid <?= sanitize($service['icon']) ?> text-5xl text-primary-500/20"></i>
+                        <div class="w-full h-full bg-gradient-to-br from-dark-800 to-dark-900">
                         </div>
                     <?php endif; ?>
                     <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-transparent to-transparent"></div>
@@ -61,6 +61,7 @@ include __DIR__ . '/includes/navbar.php';
             </div>
             <?php endforeach; ?>
         </div>
+
     </div>
 </section>
 
@@ -68,7 +69,7 @@ include __DIR__ . '/includes/navbar.php';
 <section class="py-24 bg-dark-900/30">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16" data-aos="fade-up">
-            <span class="section-badge"><i class="fa-solid fa-map-location-dot"></i> Coverage</span>
+
             <h2 class="section-title text-3xl sm:text-4xl md:text-5xl text-white mt-4 mb-4">
                 Service <span class="gradient-text">Areas</span>
             </h2>

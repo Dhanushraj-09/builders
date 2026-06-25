@@ -1,7 +1,7 @@
 <?php
 /**
  * Database Connection
- * Builder Company Website
+ * CELTA Builder Website
  */
 
 define('DB_HOST', 'localhost');
@@ -11,7 +11,7 @@ define('DB_PASS', '');
 define('DB_CHARSET', 'utf8mb4');
 
 // Site Configuration
-define('SITE_NAME', 'StructuraPro Builders');
+define('SITE_NAME', 'CELTA Builder');
 define('SITE_TAGLINE', 'Building Dreams Into Reality');
 define('SITE_PHONE', '+91 98765 43210');
 define('SITE_WHATSAPP', '919876543210');

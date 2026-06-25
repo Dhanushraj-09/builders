@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Auto-hide flash messages
-    const flashMessages = document.querySelectorAll('[class*="bg-green-500/10"], [class*="bg-red-500/10"]');
+    const flashMessages = document.querySelectorAll('div.border.mb-6[class*="bg-green-500/10"], div.border.mb-6[class*="bg-red-500/10"]');
     flashMessages.forEach(msg => {
         setTimeout(() => {
             msg.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
