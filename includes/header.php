@@ -1,7 +1,7 @@
 <?php
 /**
  * Frontend Header
- * CELTA Builder Website
+ * CELTA Builders Website
  */
 $currentPage = basename($_SERVER['PHP_SELF'], '.php');
 ?>

@@ -1,12 +1,12 @@
 <?php
 /**
- * Contact Page — StructuraPro Builders
+ * Contact Page — CELTA Builders
  */
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/auth.php';
 
 $pageTitle = 'Contact Us';
-$pageDescription = 'Get in touch with StructuraPro Builders for free construction consultation and quotation. Call, WhatsApp, or fill our contact form.';
+$pageDescription = 'Get in touch with CELTA Builders for free construction consultation and quotation. Call, WhatsApp, or fill our contact form.';
 
 $success = '';
 $error = '';

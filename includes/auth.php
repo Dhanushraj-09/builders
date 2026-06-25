@@ -1,7 +1,7 @@
 <?php
 /**
  * Authentication Helper
- * CELTA Builder Website
+ * CELTA Builders Website
  */
 
 session_start();

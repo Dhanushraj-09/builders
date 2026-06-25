@@ -1,12 +1,12 @@
 <?php
 /**
- * Home Page — StructuraPro Builders
+ * Home Page — CELTA Builders
  */
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/auth.php';
 
 $pageTitle = 'Home';
-$pageDescription = 'StructuraPro Builders — Premium construction company in Srivilliputhur, Tamil Nadu. Expert builders for residential, commercial, interior works & renovation with modern 3D designs.';
+$pageDescription = 'CELTA Builders — Premium construction company in Srivilliputhur, Tamil Nadu. Expert builders for residential, commercial, interior works & renovation with modern 3D designs.';
 
 // Fetch featured projects
 $featuredStmt = $pdo->query("SELECT p.*, (SELECT image FROM project_images WHERE project_id = p.id ORDER BY sort_order ASC LIMIT 1) as thumbnail FROM projects p WHERE p.featured = 1 ORDER BY p.created_at DESC LIMIT 6");

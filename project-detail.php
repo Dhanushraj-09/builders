@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Detail Page — StructuraPro Builders
+ * Project Detail Page — CELTA Builders
  */
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/auth.php';

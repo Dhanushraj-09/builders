@@ -1,7 +1,7 @@
 <?php
 /**
  * Footer
- * CELTA Builder Website
+ * CELTA Builders Website
  */
 ?>
 

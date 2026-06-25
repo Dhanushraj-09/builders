@@ -1,12 +1,12 @@
 <?php
 /**
- * Services Page — StructuraPro Builders
+ * Services Page — CELTA Builders
  */
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/auth.php';
 
 $pageTitle = 'Our Services';
-$pageDescription = 'Complete construction services including residential, commercial, interior works, renovation, electrical, and architecture design by StructuraPro Builders.';
+$pageDescription = 'Complete construction services including residential, commercial, interior works, renovation, electrical, and architecture design by CELTA Builders.';
 
 $servicesStmt = $pdo->query("SELECT * FROM services ORDER BY sort_order ASC");
 $services = $servicesStmt->fetchAll();

@@ -1,7 +1,7 @@
 <?php
 /**
  * Navigation Bar
- * CELTA Builder Website
+ * CELTA Builders Website
  */
 
 $notifStmt = $pdo->query("SELECT message FROM notifications WHERE status = 'active' ORDER BY created_at DESC");

@@ -1,12 +1,12 @@
 <?php
 /**
- * About Page — StructuraPro Builders
+ * About Page — CELTA Builders
  */
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/auth.php';
 
 $pageTitle = 'About Us';
-$pageDescription = 'Learn about StructuraPro Builders — our history, mission, team, and achievements in premium construction across Tamil Nadu.';
+$pageDescription = 'Learn about CELTA Builders — our history, mission, team, and achievements in premium construction across Tamil Nadu.';
 
 include __DIR__ . '/includes/header.php';
 include __DIR__ . '/includes/navbar.php';
@@ -46,7 +46,7 @@ include __DIR__ . '/includes/navbar.php';
                     Building <span class="gradient-text">Excellence</span> Since 2013
                 </h2>
                 <p class="text-dark-300 leading-relaxed mb-4">
-                    StructuraPro Builders was founded with a vision to transform the construction industry in Tamil Nadu. Starting from a small team in Srivilliputhur, we have grown into a trusted name in residential and commercial construction.
+                    CELTA Builders was founded with a vision to transform the construction industry in Tamil Nadu. Starting from a small team in Srivilliputhur, we have grown into a trusted name in residential and commercial construction.
                 </p>
                 <p class="text-dark-400 leading-relaxed mb-6">
                     With over 150 completed projects and a team of 35+ skilled professionals, we deliver premium construction solutions combining modern technology, quality materials, and expert craftsmanship. Our commitment to transparency, on-time delivery, and client satisfaction has earned us the trust of hundreds of families and businesses.
@@ -119,7 +119,7 @@ include __DIR__ . '/includes/navbar.php';
         <div class="text-center mb-16" data-aos="fade-up">
 
             <h2 class="section-title text-3xl sm:text-4xl md:text-5xl text-white mt-4 mb-4">
-                Why Choose <span class="gradient-text">CELTA Builder</span>
+                Why Choose <span class="gradient-text">CELTA Builders</span>
             </h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
