@@ -10,6 +10,7 @@ $adminPageTitle = 'Add Project';
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verify_csrf_token();
     $title = sanitize($_POST['title'] ?? '');
     $slug = generateSlug($title);
     $client_name = sanitize($_POST['client_name'] ?? '');
@@ -81,6 +82,7 @@ include __DIR__ . '/../includes/admin_sidebar.php';
 <?php endif; ?>
 
 <form method="POST" enctype="multipart/form-data" class="space-y-6">
+    <input type="hidden" name="csrf_token" value="<?= generate_csrf_token() ?>">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Main Form -->
         <div class="lg:col-span-2 space-y-6">
@@ -111,7 +113,8 @@ include __DIR__ . '/../includes/admin_sidebar.php';
                 <div>
                     <label class="form-label">Project Media (Photos & Videos)</label>
                     <input type="file" name="images[]" multiple accept="image/*,video/*" class="form-input file:mr-4 file:py-1 file:px-4 file:rounded-lg file:border-0 file:bg-primary-500/10 file:text-primary-400 file:text-sm file:font-semibold">
-                    <p class="text-dark-600 text-xs mt-1">Accepted: JPG, PNG, WebP, GIF, MP4, WEBM. Max 50MB each.</p>
+                    <p class="text-dark-600 text-xs mt-1">Accepted: JPG, PNG, WebP, GIF, MP4, WEBM. Max 50MB each. Hold Ctrl/Cmd to select multiple files.</p>
+                    <div class="preview flex flex-wrap gap-3 mt-3"></div>
                 </div>
                 <div>
                     <label class="form-label">Video URL (YouTube embed)</label>

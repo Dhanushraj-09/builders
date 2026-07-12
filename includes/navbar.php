@@ -5,7 +5,7 @@
  */
 
 $notifStmt = $pdo->query("SELECT message FROM notifications WHERE status = 'active' ORDER BY created_at DESC");
-$activeNotifs = $notifStmt->fetchAll(PDO::FETCH_COLUMN);
+$activeNotifs = array_map('sanitize', $notifStmt->fetchAll(PDO::FETCH_COLUMN));
 ?>
 
 <?php if (!empty($activeNotifs)): ?>

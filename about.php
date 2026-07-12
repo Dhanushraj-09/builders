@@ -49,15 +49,15 @@ include __DIR__ . '/includes/navbar.php';
                     CELTA Builders was founded with a vision to transform the construction industry in Tamil Nadu. Starting from a small team in Srivilliputhur, we have grown into a trusted name in residential and commercial construction.
                 </p>
                 <p class="text-dark-400 leading-relaxed mb-6">
-                    With over 150 completed projects and a team of 35+ skilled professionals, we deliver premium construction solutions combining modern technology, quality materials, and expert craftsmanship. Our commitment to transparency, on-time delivery, and client satisfaction has earned us the trust of hundreds of families and businesses.
+                    With over 200 completed projects and a team of 100+ skilled professionals, we deliver premium construction solutions combining modern technology, quality materials, and expert craftsmanship. Our commitment to transparency, on-time delivery, and client satisfaction has earned us the trust of hundreds of families and businesses.
                 </p>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="glass-card p-4 text-center">
-                        <div class="stat-number text-2xl" data-counter="150" data-suffix="+">0</div>
+                        <div class="stat-number text-2xl" data-counter="200" data-suffix="+">0</div>
                         <p class="text-dark-400 text-xs mt-1">Projects Completed</p>
                     </div>
                     <div class="glass-card p-4 text-center">
-                        <div class="stat-number text-2xl" data-counter="12" data-suffix="+">0</div>
+                        <div class="stat-number text-2xl" data-counter="15" data-suffix="+">0</div>
                         <p class="text-dark-400 text-xs mt-1">Years Experience</p>
                     </div>
                 </div>
@@ -96,10 +96,10 @@ include __DIR__ . '/includes/navbar.php';
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             <?php
             $stats = [
-                ['icon' => 'fa-building', 'count' => 150, 'suffix' => '+', 'label' => 'Projects Completed'],
-                ['icon' => 'fa-users', 'count' => 120, 'suffix' => '+', 'label' => 'Happy Clients'],
-                ['icon' => 'fa-calendar-check', 'count' => 12, 'suffix' => '+', 'label' => 'Years Experience'],
-                ['icon' => 'fa-people-group', 'count' => 35, 'suffix' => '+', 'label' => 'Team Members'],
+                ['icon' => 'fa-building', 'count' => 200, 'suffix' => '+', 'label' => 'Projects Completed'],
+                ['icon' => 'fa-users', 'count' => 200, 'suffix' => '+', 'label' => 'Happy Clients'],
+                ['icon' => 'fa-calendar-check', 'count' => 15, 'suffix' => '+', 'label' => 'Years Experience'],
+                // ['icon' => 'fa-people-group', 'count' => 35, 'suffix' => '+', 'label' => 'Team Members'],
             ];
             foreach($stats as $i => $stat):
             ?>
@@ -128,9 +128,9 @@ include __DIR__ . '/includes/navbar.php';
                 ['icon' => 'fa-medal', 'title' => 'Premium Quality', 'desc' => 'Only the finest materials and construction methods for lasting durability.'],
                 ['icon' => 'fa-clock', 'title' => 'On-Time Delivery', 'desc' => 'Strict project timelines with regular progress tracking and updates.'],
                 ['icon' => 'fa-hand-holding-dollar', 'title' => 'Transparent Pricing', 'desc' => 'No hidden costs. Detailed budgets with clear breakdowns upfront.'],
-                ['icon' => 'fa-shield-halved', 'title' => 'Safety First', 'desc' => 'Highest safety standards for workers and structures at every stage.'],
-                ['icon' => 'fa-headset', 'title' => '24/7 Support', 'desc' => 'Dedicated project managers and round-the-clock communication.'],
-                ['icon' => 'fa-certificate', 'title' => 'Warranty Assured', 'desc' => 'Comprehensive warranty coverage for complete peace of mind.'],
+                // ['icon' => 'fa-shield-halved', 'title' => 'Safety First', 'desc' => 'Highest safety standards for workers and structures at every stage.'],
+                // ['icon' => 'fa-headset', 'title' => '24/7 Support', 'desc' => 'Dedicated project managers and round-the-clock communication.'],
+                // ['icon' => 'fa-certificate', 'title' => 'Warranty Assured', 'desc' => 'Comprehensive warranty coverage for complete peace of mind.'],
             ];
             foreach($reasons as $i => $r):
             ?>

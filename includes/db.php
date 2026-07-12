@@ -13,10 +13,10 @@ define('DB_CHARSET', 'utf8mb4');
 // Site Configuration
 define('SITE_NAME', 'CELTA Builders');
 define('SITE_TAGLINE', 'Building Dreams Into Reality');
-define('SITE_PHONE', '+91 98765 43210');
-define('SITE_WHATSAPP', '919876543210');
-define('SITE_EMAIL', 'info@structurapro.com');
-define('SITE_ADDRESS', '123, Main Road, Srivilliputhur, Virudhunagar District, Tamil Nadu - 626125');
+define('SITE_PHONE', '+91 95145 44444');
+define('SITE_WHATSAPP', '+91 95145 44444');
+define('SITE_EMAIL', 'celtabuilders@gmail.com');
+define('SITE_ADDRESS', 'Convent complex ,Bypass road, Srivilliputhur ..<br> Manicka vinayagar colony Retta palam bus stop (Opp) Sivakasi , Virudhunagar District, Tamil Nadu - 626125');
 define('SITE_URL', 'http://localhost/builders');
 
 // Upload paths

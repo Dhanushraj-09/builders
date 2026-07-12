@@ -49,7 +49,7 @@ include __DIR__ . '/../includes/admin_sidebar.php';
                             <a href="?read=<?= $c['id'] ?>" class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 hover:bg-green-500/20" title="Mark as read"><i class="fa-solid fa-check text-xs"></i></a>
                             <?php endif; ?>
                             <a href="https://wa.me/<?= preg_replace('/[^0-9]/', '', $c['phone']) ?>" target="_blank" class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 hover:bg-green-500/20" title="WhatsApp"><i class="fa-brands fa-whatsapp text-xs"></i></a>
-                            <a href="<?= SITE_URL ?>/admin/contacts/delete.php?id=<?= $c['id'] ?>" onclick="return confirm('Delete this inquiry?')" class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 hover:bg-red-500/20" title="Delete"><i class="fa-solid fa-trash text-xs"></i></a>
+                            <a href="<?= SITE_URL ?>/admin/contacts/delete.php?id=<?= $c[&token=<?= generate_csrf_token() ?>'id'] ?>&token=<?= generate_csrf_token() ?>" onclick="return confirm('Delete this inquiry?')" class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 hover:bg-red-500/20" title="Delete"><i class="fa-solid fa-trash text-xs"></i></a>
                         </div>
                     </td>
                 </tr>

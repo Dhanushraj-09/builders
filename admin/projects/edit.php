@@ -23,6 +23,7 @@ $adminPageTitle = 'Edit Project';
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verify_csrf_token();
     $title = sanitize($_POST['title'] ?? '');
     $client_name = sanitize($_POST['client_name'] ?? '');
     $location = sanitize($_POST['location'] ?? '');
@@ -104,6 +105,7 @@ include __DIR__ . '/../includes/admin_sidebar.php';
 <?php endif; ?>
 
 <form method="POST" enctype="multipart/form-data" class="space-y-6">
+    <input type="hidden" name="csrf_token" value="<?= generate_csrf_token() ?>">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div class="lg:col-span-2 space-y-6">
             <div class="glass-card p-6 space-y-5">
@@ -130,9 +132,14 @@ include __DIR__ . '/../includes/admin_sidebar.php';
                     <?php foreach($existingImages as $img): ?>
                     <div class="relative group">
                         <img src="<?= UPLOAD_URL ?>projects/<?= sanitize($img['image']) ?>" class="w-full aspect-square object-cover rounded-xl border border-white/5">
-                        <label class="absolute inset-0 bg-red-500/0 group-hover:bg-red-500/30 rounded-xl flex items-center justify-center cursor-pointer transition-colors">
+                        <label class="absolute inset-0 bg-red-500/0 group-hover:bg-red-500/30 has-[:checked]:bg-red-900/70 rounded-xl flex items-center justify-center cursor-pointer transition-colors">
                             <input type="checkbox" name="delete_images[]" value="<?= $img['id'] ?>" class="hidden peer">
-                            <span class="opacity-0 group-hover:opacity-100 peer-checked:opacity-100 text-white text-sm bg-red-500 px-2 py-1 rounded-lg"><i class="fa-solid fa-trash mr-1"></i>Remove</span>
+                            <span class="opacity-0 group-hover:opacity-100 peer-checked:hidden text-white text-sm bg-red-500 px-3 py-1.5 rounded-lg shadow-lg transition-opacity">
+                                <i class="fa-solid fa-trash mr-1"></i>Remove
+                            </span>
+                            <span class="hidden peer-checked:flex items-center text-white text-sm bg-red-600 px-3 py-1.5 rounded-lg shadow-lg border border-red-400">
+                                <i class="fa-solid fa-check mr-1"></i>Marked
+                            </span>
                         </label>
                     </div>
                     <?php endforeach; ?>
@@ -145,7 +152,8 @@ include __DIR__ . '/../includes/admin_sidebar.php';
                 <h3 class="font-heading font-bold text-white text-lg border-b border-white/5 pb-3">Add More Media (Photos & Videos)</h3>
                 <div>
                     <input type="file" name="images[]" multiple accept="image/*,video/*" class="form-input file:mr-4 file:py-1 file:px-4 file:rounded-lg file:border-0 file:bg-primary-500/10 file:text-primary-400 file:text-sm file:font-semibold">
-                    <p class="text-dark-600 text-xs mt-1">Accepted: JPG, PNG, WebP, GIF, MP4, WEBM. Max 50MB each.</p>
+                    <p class="text-dark-600 text-xs mt-1">Accepted: JPG, PNG, WebP, GIF, MP4, WEBM. Max 50MB each. Hold Ctrl/Cmd to select multiple files.</p>
+                    <div class="preview flex flex-wrap gap-3 mt-3"></div>
                 </div>
                 <div><label class="form-label">Video URL</label><input type="text" name="video" class="form-input" value="<?= sanitize($project['video'] ?? '') ?>"></div>
             </div>

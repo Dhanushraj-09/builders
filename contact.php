@@ -13,6 +13,7 @@ $error = '';
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verify_csrf_token();
     $name = sanitize($_POST['name'] ?? '');
     $email = sanitize($_POST['email'] ?? '');
     $phone = sanitize($_POST['phone'] ?? '');
@@ -23,6 +24,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($name) || empty($phone)) {
         $error = 'Please fill in your name and phone number.';
+    } elseif (strlen($name) > 50) {
+        $error = 'Name must not exceed 50 characters.';
+    } elseif (!preg_match('/^[a-zA-Z\s]+$/', $name)) {
+        $error = 'Name can only contain alphabets and spaces.';
+    } elseif (!preg_match('/^[0-9]{10}$/', $phone)) {
+        $error = 'Please enter a valid 10-digit phone number.';
+    } elseif (!empty($email) && !preg_match('/^[a-zA-Z0-9._%+-]+@gmail\.com$/', $email)) {
+        $error = 'Only @gmail.com email addresses are allowed.';
+    } elseif (strlen($location) > 100) {
+        $error = 'Location must not exceed 100 characters.';
+    } elseif (strlen($message) > 500) {
+        $error = 'Message must not exceed 500 characters.';
     } else {
         $stmt = $pdo->prepare("INSERT INTO contacts (name, email, phone, construction_type, budget_range, location, message) VALUES (:name, :email, :phone, :ct, :br, :loc, :msg)");
         $stmt->execute([
@@ -111,19 +124,20 @@ include __DIR__ . '/includes/navbar.php';
                 <?php endif; ?>
 
                 <form id="contact-form" method="POST" class="space-y-5">
+    <input type="hidden" name="csrf_token" value="<?= generate_csrf_token() ?>">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
                             <label class="form-label">Full Name *</label>
-                            <input type="text" name="name" class="form-input" placeholder="Your full name" required>
+                            <input type="text" name="name" id="name" class="form-input" placeholder="Your full name" required maxlength="50" pattern="^[a-zA-Z\s]+$" title="Only alphabets and spaces are allowed">
                         </div>
                         <div>
                             <label class="form-label">Phone Number *</label>
-                            <input type="tel" name="phone" class="form-input" placeholder="+91 XXXXX XXXXX" required>
+                            <input type="tel" name="phone" id="phone" class="form-input" placeholder="10-digit mobile number" required pattern="[0-9]{10}" maxlength="10" title="Please enter a valid 10-digit phone number">
                         </div>
                     </div>
                     <div>
-                        <label class="form-label">Email Address</label>
-                        <input type="email" name="email" class="form-input" placeholder="your@email.com">
+                        <label class="form-label">Email Address (Gmail Only)</label>
+                        <input type="email" name="email" id="email" class="form-input" placeholder="your@gmail.com" maxlength="100" pattern="^[a-zA-Z0-9._%+\-]+@gmail\.com$" title="Please provide a valid Gmail address (ending in @gmail.com)">
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
@@ -152,17 +166,58 @@ include __DIR__ . '/includes/navbar.php';
                     </div>
                     <div>
                         <label class="form-label">Project Location</label>
-                        <input type="text" name="location" class="form-input" placeholder="City / Area">
+                        <input type="text" name="location" id="location" class="form-input" placeholder="City / Area" maxlength="100">
                     </div>
                     <div>
                         <label class="form-label">Message</label>
-                        <textarea name="message" rows="4" class="form-input" placeholder="Tell us about your project..."></textarea>
+                        <textarea name="message" id="message" rows="4" class="form-input" placeholder="Tell us about your project..." maxlength="500"></textarea>
+                        <div class="text-right text-xs text-dark-400 mt-1"><span id="char-count">0</span>/500 characters</div>
                     </div>
                     <button type="submit" class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-600 text-dark-950 px-8 py-4 rounded-xl font-heading font-bold text-base hover:shadow-2xl hover:shadow-primary-500/30 hover:-translate-y-1 transition-all">
                         <i class="fa-solid fa-paper-plane"></i>
                         Submit Inquiry
                     </button>
                 </form>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const phoneInput = document.getElementById('phone');
+                        const emailInput = document.getElementById('email');
+                        const nameInput = document.getElementById('name');
+                        const messageInput = document.getElementById('message');
+                        const charCount = document.getElementById('char-count');
+
+                        phoneInput.addEventListener('input', function () {
+                            if (this.value && !/^[0-9]{10}$/.test(this.value)) {
+                                this.setCustomValidity('Please enter a valid 10-digit phone number.');
+                            } else {
+                                this.setCustomValidity('');
+                            }
+                        });
+                        
+                        emailInput.addEventListener('input', function () {
+                            if (this.value !== '' && !/^[a-zA-Z0-9._%+\-]+@gmail\.com$/.test(this.value)) {
+                                this.setCustomValidity('Only @gmail.com email addresses are allowed.');
+                            } else {
+                                this.setCustomValidity('');
+                            }
+                        });
+
+                        nameInput.addEventListener('input', function () {
+                            if (this.value && !/^[a-zA-Z\s]+$/.test(this.value)) {
+                                this.setCustomValidity('Name can only contain alphabets and spaces.');
+                            } else {
+                                this.setCustomValidity('');
+                            }
+                        });
+
+                        if (messageInput && charCount) {
+                            messageInput.addEventListener('input', function() {
+                                charCount.textContent = this.value.length;
+                            });
+                        }
+                    });
+                </script>
             </div>
 
             <!-- Map -->

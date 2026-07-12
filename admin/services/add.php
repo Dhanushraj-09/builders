@@ -9,6 +9,7 @@ $adminPageTitle = 'Add Service';
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verify_csrf_token();
     $title = sanitize($_POST['title'] ?? '');
     $description = sanitize($_POST['description'] ?? '');
     $icon = sanitize($_POST['icon'] ?? 'fa-building');
@@ -41,6 +42,7 @@ include __DIR__ . '/../includes/admin_sidebar.php';
 <?php if ($error): ?><div class="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-xl mb-6 text-sm"><i class="fa-solid fa-circle-exclamation mr-2"></i><?= $error ?></div><?php endif; ?>
 
 <form method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="<?= generate_csrf_token() ?>">
     <div class="glass-card p-6 space-y-5 max-w-2xl">
         <div><label class="form-label">Title *</label><input type="text" name="title" class="form-input" required></div>
         <div><label class="form-label">Description</label><textarea name="description" rows="4" class="form-input"></textarea></div>

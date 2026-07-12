@@ -9,6 +9,7 @@ if (isLoggedIn()) { redirect(SITE_URL . '/admin/dashboard.php'); }
 
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verify_csrf_token();
     $username = sanitize($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
     if (loginAdmin($pdo, $username, $password)) {
@@ -61,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
 
             <form method="POST" class="space-y-5">
+    <input type="hidden" name="csrf_token" value="<?= generate_csrf_token() ?>">
                 <div>
                     <label class="form-label">Username</label>
                     <div class="relative">

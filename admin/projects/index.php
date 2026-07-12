@@ -46,7 +46,7 @@ include __DIR__ . '/../includes/admin_sidebar.php';
                     <td>
                         <div class="flex items-center gap-2">
                             <a href="<?= SITE_URL ?>/admin/projects/edit.php?id=<?= $p['id'] ?>" class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 hover:bg-blue-500/20 transition-colors" title="Edit"><i class="fa-solid fa-pen-to-square text-xs"></i></a>
-                            <a href="<?= SITE_URL ?>/admin/projects/delete.php?id=<?= $p['id'] ?>" onclick="return confirm('Are you sure you want to delete this project?')" class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 hover:bg-red-500/20 transition-colors" title="Delete"><i class="fa-solid fa-trash text-xs"></i></a>
+                            <a href="<?= SITE_URL ?>/admin/projects/delete.php?id=<?= $p[&token=<?= generate_csrf_token() ?>'id'] ?>&token=<?= generate_csrf_token() ?>" onclick="return confirm('Are you sure you want to delete this project?')" class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 hover:bg-red-500/20 transition-colors" title="Delete"><i class="fa-solid fa-trash text-xs"></i></a>
                         </div>
                     </td>
                 </tr>

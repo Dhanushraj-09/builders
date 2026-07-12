@@ -37,7 +37,7 @@ include __DIR__ . '/../includes/admin_sidebar.php';
                 <td>
                     <div class="flex items-center gap-2">
                         <a href="<?= SITE_URL ?>/admin/services/edit.php?id=<?= $s['id'] ?>" class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 hover:bg-blue-500/20"><i class="fa-solid fa-pen-to-square text-xs"></i></a>
-                        <a href="<?= SITE_URL ?>/admin/services/delete.php?id=<?= $s['id'] ?>" onclick="return confirm('Delete this service?')" class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 hover:bg-red-500/20"><i class="fa-solid fa-trash text-xs"></i></a>
+                        <a href="<?= SITE_URL ?>/admin/services/delete.php?id=<?= $s[&token=<?= generate_csrf_token() ?>'id'] ?>&token=<?= generate_csrf_token() ?>" onclick="return confirm('Delete this service?')" class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 hover:bg-red-500/20"><i class="fa-solid fa-trash text-xs"></i></a>
                     </div>
                 </td>
             </tr>

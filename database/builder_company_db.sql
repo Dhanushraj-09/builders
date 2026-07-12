@@ -102,7 +102,7 @@ INSERT INTO services (title, description, icon, image, sort_order) VALUES
 ('Commercial Construction', 'Professional construction of office buildings, shops, warehouses, hotels, showrooms, and commercial complexes with industry-leading standards.', 'fa-building', 'commercial.png', 2),
 ('Interior Works', 'Complete interior solutions including modular kitchen, false ceiling, interior decoration, and premium finishing works for residential and commercial spaces.', 'fa-couch', 'interior.png', 3),
 ('Renovation Services', 'Transform your existing spaces with our expert renovation services. From structural changes to complete makeovers, we bring new life to old buildings.', 'fa-hammer', 'renovation.png', 4),
-('Electrical Works', 'Complete electrical solutions for residential and commercial buildings including wiring, panel installation, automation, and safety systems.', 'fa-bolt', 'electrical.png', 5),
+-- ('Electrical Works', 'Complete electrical solutions for residential and commercial buildings including wiring, panel installation, automation, and safety systems.', 'fa-bolt', 'electrical.png', 5),
 ('Architecture & Design', 'Professional architectural planning, 2D/3D elevation design, building plan approval assistance, structural design, and engineering consultation.', 'fa-compass-drafting', 'architecture.png', 6);
 
 -- Sample Notifications

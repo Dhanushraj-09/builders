@@ -16,6 +16,7 @@ if (!$notif) { redirect(SITE_URL . '/admin/notifications/'); }
 $adminPageTitle = 'Edit Notification';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verify_csrf_token();
     $message = sanitize($_POST['message'] ?? '');
     $status = sanitize($_POST['status'] ?? 'active');
     if (!empty($message)) {
@@ -31,6 +32,7 @@ include __DIR__ . '/../includes/admin_sidebar.php';
 <a href="<?= SITE_URL ?>/admin/notifications/" class="inline-flex items-center gap-2 text-dark-400 text-sm hover:text-white mb-6"><i class="fa-solid fa-arrow-left text-xs"></i> Back</a>
 
 <form method="POST">
+    <input type="hidden" name="csrf_token" value="<?= generate_csrf_token() ?>">
     <div class="glass-card p-6 space-y-5 max-w-2xl">
         <div><label class="form-label">Message *</label><input type="text" name="message" class="form-input" value="<?= sanitize($notif['message']) ?>" required></div>
         <div><label class="form-label">Status</label>

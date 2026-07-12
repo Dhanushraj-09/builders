@@ -61,20 +61,20 @@ include __DIR__ . '/includes/navbar.php';
             </div>
             <div class="hero-stats flex flex-wrap gap-8">
                 <div>
-                    <div class="stat-number text-3xl" data-counter="150" data-suffix="+">0</div>
+                    <div class="stat-number text-3xl" data-counter="200" data-suffix="+">0</div>
                     <p class="text-dark-400 text-sm mt-1">Projects Completed</p>
                 </div>
                 <div>
-                    <div class="stat-number text-3xl" data-counter="120" data-suffix="+">0</div>
+                    <div class="stat-number text-3xl" data-counter="200" data-suffix="+">0</div>
                     <p class="text-dark-400 text-sm mt-1">Happy Clients</p>
                 </div>
                 <div>
-                    <div class="stat-number text-3xl" data-counter="12" data-suffix="+">0</div>
+                    <div class="stat-number text-3xl" data-counter="15" data-suffix="+">0</div>
                     <p class="text-dark-400 text-sm mt-1">Years Experience</p>
                 </div>
                 <div>
-                    <div class="stat-number text-3xl" data-counter="35" data-suffix="+">0</div>
-                    <p class="text-dark-400 text-sm mt-1">Expert Team</p>
+                    <!-- <div class="stat-number text-3xl" data-counter="35" data-suffix="+">0</div>
+                    <p class="text-dark-400 text-sm mt-1">Expert Team</p> -->
                 </div>
             </div>
         </div>
