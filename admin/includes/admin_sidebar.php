@@ -11,8 +11,8 @@ $adminDir = basename(dirname($_SERVER['PHP_SELF']));
     <!-- Logo -->
     <div class="p-6 border-b border-white/5">
         <a href="<?= SITE_URL ?>/admin/dashboard.php" class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/20">
-                <i class="fa-solid fa-helmet-safety text-dark-950 text-lg"></i>
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden shadow-lg shadow-primary-500/20">
+                <img src="<?= SITE_URL ?>/assets/images/logo.png" alt="Admin Logo" class="w-full h-full object-cover">
             </div>
             <div>
                 <span class="text-base font-heading font-bold text-white">Admin Panel</span>

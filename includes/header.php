@@ -26,7 +26,7 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
     <meta property="og:image" content="<?= SITE_URL ?>/assets/images/og-image.jpg">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="<?= SITE_URL ?>/assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="<?= SITE_URL ?>/assets/images/logo.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

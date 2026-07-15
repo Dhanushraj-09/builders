@@ -93,7 +93,7 @@ include __DIR__ . '/includes/navbar.php';
                 Our <span class="gradient-text">Numbers</span> Speak
             </h2>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <?php
             $stats = [
                 ['icon' => 'fa-building', 'count' => 200, 'suffix' => '+', 'label' => 'Projects Completed'],

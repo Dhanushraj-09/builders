@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="w-full max-w-md">
         <!-- Logo -->
         <div class="text-center mb-8">
-            <div class="w-16 h-16 mx-auto bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center shadow-lg shadow-primary-500/25 mb-4">
-                <i class="fa-solid fa-helmet-safety text-dark-950 text-2xl"></i>
+            <div class="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center overflow-hidden shadow-lg shadow-primary-500/25 mb-4">
+                <img src="<?= SITE_URL ?>/assets/images/logo.png" alt="<?= SITE_NAME ?> Logo" class="w-full h-full object-cover">
             </div>
             <h1 class="text-2xl font-heading font-bold text-white"><?= SITE_NAME ?></h1>
             <p class="text-dark-400 text-sm mt-1">Admin Panel</p>

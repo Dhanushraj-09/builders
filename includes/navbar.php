@@ -29,12 +29,12 @@ $activeNotifs = array_map('sanitize', $notifStmt->fetchAll(PDO::FETCH_COLUMN));
             
             <!-- Logo -->
             <a href="<?= SITE_URL ?>" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/25 group-hover:shadow-primary-500/40 transition-shadow">
-                    <i class="fa-solid fa-helmet-safety text-dark-950 text-lg"></i>
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden shadow-lg shadow-primary-500/25 group-hover:shadow-primary-500/40 transition-shadow">
+                    <img src="<?= SITE_URL ?>/assets/images/logo.png" alt="<?= SITE_NAME ?> Logo" class="w-full h-full object-cover">
                 </div>
                 <div>
                     <span class="text-lg font-heading font-bold text-white"><?= SITE_NAME ?></span>
-                    <span class="hidden sm:block text-[10px] text-primary-400 tracking-widest uppercase">We Understand Your Dream</span>
+                    <span class="hidden sm:block text-[10px] text-primary-400 tracking-widest ">We Understand Your Dream </span>
                 </div>
             </a>
 

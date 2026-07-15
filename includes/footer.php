@@ -13,8 +13,8 @@
             <!-- Company Info -->
             <div class="lg:col-span-1">
                 <a href="<?= SITE_URL ?>" class="flex items-center gap-3 mb-6">
-                    <div class="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/25">
-                        <i class="fa-solid fa-helmet-safety text-dark-950 text-xl"></i>
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden shadow-lg shadow-primary-500/25">
+                        <img src="<?= SITE_URL ?>/assets/images/logo.png" alt="<?= SITE_NAME ?> Logo" class="w-full h-full object-cover">
                     </div>
                     <div>
                         <span class="text-xl font-heading font-bold text-white"><?= SITE_NAME ?></span>
@@ -23,10 +23,10 @@
                 </a>
                 <p class="text-dark-400 text-sm leading-relaxed mb-6">Building dreams into reality with premium construction quality, modern designs, and trusted craftsmanship across Tamil Nadu.</p>
                 <div class="flex gap-3">
-                    <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-dark-400 hover:text-primary-400 hover:border-primary-400/30 hover:bg-primary-400/5 transition-all"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-dark-400 hover:text-primary-400 hover:border-primary-400/30 hover:bg-primary-400/5 transition-all"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-dark-400 hover:text-primary-400 hover:border-primary-400/30 hover:bg-primary-400/5 transition-all"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-dark-400 hover:text-primary-400 hover:border-primary-400/30 hover:bg-primary-400/5 transition-all"><i class="fa-brands fa-whatsapp"></i></a>
+                    <!-- <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-dark-400 hover:text-primary-400 hover:border-primary-400/30 hover:bg-primary-400/5 transition-all"><i class="fa-brands fa-facebook-f"></i></a> -->
+                    <a href="<?= SITE_INSTAGRAM ?>" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-dark-400 hover:text-primary-400 hover:border-primary-400/30 hover:bg-primary-400/5 transition-all" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <!-- <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-dark-400 hover:text-primary-400 hover:border-primary-400/30 hover:bg-primary-400/5 transition-all"><i class="fa-brands fa-youtube"></i></a> -->
+                    <a href="https://wa.me/<?= SITE_WHATSAPP ?>?text=Hello%2C%20I%20am%20interested%20in%20your%20construction%20services." target="_blank" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-dark-400 hover:text-primary-400 hover:border-primary-400/30 hover:bg-primary-400/5 transition-all"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
             </div>
 
@@ -88,7 +88,7 @@
                 <span class="theme-toggle-label" id="theme-label">Dark Mode</span>
             </button>
 
-            <p class="text-dark-600 text-xs">Designed with <i class="fa-solid fa-heart text-primary-500"></i> for Premium Construction</p>
+            <p class="text-dark-600 text-xs">Developed By <i class="fa-solid fa-heart text-primary-500"></i> Andal Infotech </p>
         </div>
     </div>
 </footer>
@@ -200,7 +200,7 @@
 
 <div class="floating-socials-wrap">
     <!-- Instagram -->
-    <a href="https://www.instagram.com/" target="_blank" class="float-btn float-btn-ig" aria-label="Follow on Instagram">
+    <a href="<?= SITE_INSTAGRAM ?>" target="_blank" class="float-btn float-btn-ig" aria-label="Follow on Instagram">
         <i class="fa-brands fa-instagram"></i>
         <span class="float-btn-tip">Follow Us</span>
         <span class="float-btn-ring"></span>

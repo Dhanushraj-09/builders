@@ -14,9 +14,10 @@ define('DB_CHARSET', 'utf8mb4');
 define('SITE_NAME', 'CELTA Builders');
 define('SITE_TAGLINE', 'Building Dreams Into Reality');
 define('SITE_PHONE', '+91 95145 44444');
-define('SITE_WHATSAPP', '+91 95145 44444');
+define('SITE_WHATSAPP', '919514544444');
 define('SITE_EMAIL', 'celtabuilders@gmail.com');
 define('SITE_ADDRESS', 'Convent complex ,Bypass road, Srivilliputhur ..<br> Manicka vinayagar colony Retta palam bus stop (Opp) Sivakasi , Virudhunagar District, Tamil Nadu - 626125');
+define('SITE_INSTAGRAM', 'https://www.instagram.com/celta_builders?igsh=MWR1cTV1ZmlqeDNrdA==');
 define('SITE_URL', 'http://localhost/builders');
 
 // Upload paths

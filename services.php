@@ -16,12 +16,12 @@ include __DIR__ . '/includes/navbar.php';
 ?>
 
 <!-- Services Section with Full Background -->
-<section class="relative overflow-hidden bg-cover bg-center bg-fixed pt-64 pb-24" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80');">
+<section class="relative overflow-hidden bg-cover bg-center bg-fixed pt-32 pb-24" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80');">
     <!-- Background Overlays -->
     <div class="absolute inset-0 bg-dark-950/40 backdrop-blur-[2px]"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/80 to-transparent"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16">
         
         <!-- Section Header -->
         <div class="text-center mb-20" data-aos="fade-up">
@@ -77,7 +77,7 @@ include __DIR__ . '/includes/navbar.php';
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             <?php
-            $areas = ['Srivilliputhur', 'Sivakasi', 'Virudhunagar', 'Madurai', 'Rajapalayam', 'Sattur', 'Aruppukottai', 'Kovilpatti', 'Tenkasi', 'Theni', 'Dindigul', 'Tirunelveli'];
+            $areas = ['Srivilliputhur', 'Sivakasi', 'Virudhunagar', 'Madurai', 'Rajapalayam', 'Sattur', 'Aruppukottai', 'Kovilpatti', 'Krishnankoil', 'Vathirairuppu', 'Alagapuri','Thirumangalam'];
             foreach($areas as $i => $area):
             ?>
             <div class="glass-card p-4 text-center group hover:border-primary-500/30" data-aos="fade-up" data-aos-delay="<?= $i * 50 ?>">

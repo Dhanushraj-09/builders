@@ -188,6 +188,7 @@ include __DIR__ . '/includes/navbar.php';
                         const charCount = document.getElementById('char-count');
 
                         phoneInput.addEventListener('input', function () {
+                            this.value = this.value.replace(/\D/g, ''); // Remove non-numeric characters instantly
                             if (this.value && !/^[0-9]{10}$/.test(this.value)) {
                                 this.setCustomValidity('Please enter a valid 10-digit phone number.');
                             } else {
@@ -204,6 +205,7 @@ include __DIR__ . '/includes/navbar.php';
                         });
 
                         nameInput.addEventListener('input', function () {
+                            this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); // Remove non-alphabets instantly
                             if (this.value && !/^[a-zA-Z\s]+$/.test(this.value)) {
                                 this.setCustomValidity('Name can only contain alphabets and spaces.');
                             } else {
